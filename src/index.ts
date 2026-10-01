@@ -31,7 +31,11 @@ export default {
       switch (matched.name) {
         case "createTournament": {
           const body = await request.json().catch(() => null);
-          return handleCreateTournament(env, body);
+          return handleCreateTournament(
+            env,
+            body,
+            request.headers.get("authorization"),
+          );
         }
         case "getTournament":
           return handleGetTournament(env, matched.tournamentId);

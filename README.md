@@ -31,6 +31,8 @@ npx wrangler dev      # local
 npx wrangler deploy   # needs `wrangler login` first
 ```
 
+Posting tournaments needs an operator token. Locally, copy `.dev.vars.example` to `.dev.vars` (stays out of git). For deploys, `wrangler secret put OPERATOR_TOKEN`. Without it, creation answers 503. Reads need no token.
+
 One quirk: install with stock npm 10 fails on a peer-deps resolution bug, so `.npmrc` sets `legacy-peer-deps`. Leave it alone.
 
 ## Layout

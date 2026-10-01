@@ -1,17 +1,26 @@
 import { StubArtifactsClient } from "../tournaments/artifacts.js";
 import { createTournament } from "../tournaments/create.js";
 import { TournamentRecordSchema } from "../tournaments/schema.js";
+import { isAuthorized } from "./auth.js";
 import {
   CreateTournamentBodySchema,
   CreateTournamentResponseSchema,
   TournamentRankingsSchema,
 } from "./schema.js";
 
-// TODO: operator auth at this boundary. Open endpoint until the auth task.
+// Single operator token. No multi-user auth by design (see SPEC non-goals).
 export async function handleCreateTournament(
   env: Env,
   body: unknown,
+  authHeader: string | null,
 ): Promise<Response> {
+  const expected = env.OPERATOR_TOKEN;
+  if (!expected) {
+    return Response.json({ error: "misconfigured" }, { status: 503 });
+  }
+  if (!isAuthorized(authHeader, expected)) {
+    return Response.json({ error: "unauthorized" }, { status: 401 });
+  }
   const parsed = CreateTournamentBodySchema.parse(body);
   const result = await createTournament(
     env,

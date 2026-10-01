@@ -9,3 +9,4 @@
 | Leaderboard | `src/leaderboard/durable-object.ts` | `src/leaderboard/*` | `tests/leaderboard.test.ts` | Durable Objects (SQLite) |
 | Health check | `src/index.ts` | `src/index.ts` | `tests/health.test.ts` | Workers |
 | HTTP routes | `src/routes/router.ts` | `src/routes/*`, `src/index.ts` | `tests/routes.test.ts` | Tournaments, Judge, Leaderboard |
+| Operator auth | `src/routes/auth.ts` | `src/routes/auth.ts`, `src/routes/handlers.ts` | `tests/routes.test.ts` | Workers secrets |

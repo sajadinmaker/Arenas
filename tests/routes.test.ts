@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { isAuthorized, parseBearer } from "../src/routes/auth.js";
 import { route } from "../src/routes/router.js";
 import { CreateTournamentResponseSchema } from "../src/routes/schema.js";
 import { TournamentInputSchema } from "../src/tournaments/schema.js";
@@ -32,6 +33,29 @@ describe("route", () => {
     expect(route("POST", "/api/tournaments/t-abc")).toBeNull();
     expect(route("GET", "/nope")).toBeNull();
     expect(route("DELETE", "/api/tournaments/t-abc")).toBeNull();
+  });
+});
+
+describe("operator auth", () => {
+  it("accepts the right bearer token", () => {
+    expect(isAuthorized("Bearer secret-1", "secret-1")).toBe(true);
+  });
+
+  it("rejects wrong tokens, missing headers, and bad schemes", () => {
+    expect(isAuthorized("Bearer wrong", "secret-1")).toBe(false);
+    expect(isAuthorized(null, "secret-1")).toBe(false);
+    expect(isAuthorized("Token secret-1", "secret-1")).toBe(false);
+    expect(isAuthorized("Bearer ", "secret-1")).toBe(false);
+  });
+
+  it("fails closed when no token is configured", () => {
+    expect(isAuthorized("Bearer anything", undefined)).toBe(false);
+    expect(isAuthorized("Bearer anything", "")).toBe(false);
+  });
+
+  it("parses the bearer scheme case-insensitively", () => {
+    expect(parseBearer("bearer abc")).toBe("abc");
+    expect(parseBearer("Basic abc")).toBeNull();
   });
 });
 
