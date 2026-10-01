@@ -1,20 +1,16 @@
-import { z } from "zod";
+import {
+  HealthResponseSchema,
+  SERVICE_VERSION,
+  type HealthResponse,
+} from "./health.js";
 
-export const HealthResponseSchema = z.object({
-  ok: z.literal(true),
-  service: z.literal("arenas"),
-  version: z.string(),
-});
-
-export type HealthResponse = z.infer<typeof HealthResponseSchema>;
-
-const VERSION = "0.1.0";
+export { LeaderboardDO } from "./leaderboard/durable-object.js";
 
 export default {
   async fetch(request: Request, _env: Env): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname === "/" || url.pathname === "/health") {
-      const body: HealthResponse = { ok: true, service: "arenas", version: VERSION };
+      const body: HealthResponse = { ok: true, service: "arenas", version: SERVICE_VERSION };
       const parsed = HealthResponseSchema.parse(body);
       return Response.json(parsed);
     }

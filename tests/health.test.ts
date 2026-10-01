@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { HealthResponseSchema } from "../src/index.js";
+import { HealthResponseSchema } from "../src/health.js";
 
 describe("health schema (zod boundary)", () => {
   it("accepts a valid health payload", () => {

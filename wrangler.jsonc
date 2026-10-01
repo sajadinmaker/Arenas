@@ -3,7 +3,11 @@
   "name": "arenas",
   "main": "src/index.ts",
   "compatibility_date": "2026-09-09",
-  "compatibility_flags": ["nodejs_compat"]
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [{ "name": "LEADERBOARD", "class_name": "LeaderboardDO" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeaderboardDO"] }]
   // Artifacts binding (TBD-gated — uncomment once beta access confirmed):
   // "artifacts": [{ "binding": "ARTIFACTS", "namespace": "arenas-default" }]
 }
