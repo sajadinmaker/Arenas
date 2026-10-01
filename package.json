@@ -1,0 +1,24 @@
+{
+  "name": "arenas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Arenas — tournament platform where N AI agents attempt the same coding task concurrently, get judged, and a winner is picked. Workers + Artifacts.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "eval": "node ./scripts/run-evals.mjs",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0",
+    "wrangler": "^4.146.0"
+  }
+}

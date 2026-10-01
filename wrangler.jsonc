@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "arenas",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-09",
+  "compatibility_flags": ["nodejs_compat"]
+  // Artifacts binding (TBD-gated — uncomment once beta access confirmed):
+  // "artifacts": [{ "binding": "ARTIFACTS", "namespace": "arenas-default" }]
+}
