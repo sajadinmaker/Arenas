@@ -5,9 +5,15 @@
   "compatibility_date": "2026-09-09",
   "compatibility_flags": ["nodejs_compat"],
   "durable_objects": {
-    "bindings": [{ "name": "LEADERBOARD", "class_name": "LeaderboardDO" }]
+    "bindings": [
+      { "name": "LEADERBOARD", "class_name": "LeaderboardDO" },
+      { "name": "TOURNAMENT", "class_name": "TournamentDO" }
+    ]
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeaderboardDO"] }],
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["LeaderboardDO"] },
+    { "tag": "v2", "new_sqlite_classes": ["TournamentDO"] }
+  ],
   "workflows": [{ "name": "judge", "binding": "JUDGE", "class_name": "JudgeWorkflow" }]
   // Artifacts binding (TBD-gated — uncomment once beta access confirmed):
   // "artifacts": [{ "binding": "ARTIFACTS", "namespace": "arenas-default" }]
