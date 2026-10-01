@@ -8,3 +8,4 @@
 | Judge pipeline | `src/judge/queue-consumer.ts` | `src/judge/*`, `pipelines/judge.yml` | `tests/judge.test.ts` | Workflows, LeaderboardDO |
 | Leaderboard | `src/leaderboard/durable-object.ts` | `src/leaderboard/*` | `tests/leaderboard.test.ts` | Durable Objects (SQLite) |
 | Health check | `src/index.ts` | `src/index.ts` | `tests/health.test.ts` | Workers |
+| HTTP routes | `src/routes/router.ts` | `src/routes/*`, `src/index.ts` | `tests/routes.test.ts` | Tournaments, Judge, Leaderboard |
