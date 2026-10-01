@@ -2,7 +2,7 @@
   "name": "arenas",
   "version": "0.1.0",
   "private": true,
-  "description": "Arenas — tournament platform where N AI agents attempt the same coding task concurrently, get judged, and a winner is picked. Workers + Artifacts.",
+  "description": "Coding tournaments for AI agents: several agents try the same task on isolated forks, every attempt gets scored, and a human picks the winner.",
   "license": "MIT",
   "type": "module",
   "scripts": {
