@@ -5,6 +5,7 @@ import {
 } from "./health.js";
 
 export { LeaderboardDO } from "./leaderboard/durable-object.js";
+export { JudgeWorkflow } from "./judge/workflow.js";
 
 export default {
   async fetch(request: Request, _env: Env): Promise<Response> {

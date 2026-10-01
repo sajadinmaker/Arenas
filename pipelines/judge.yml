@@ -1,0 +1,26 @@
+# Arenas judge pipeline (advisory stub — enforcement lands in a later pipeline task).
+# Gates per the playbook: lint + typecheck + unit tests -> evals -> preview deploy
+# -> automated diff review (advisory) -> HUMAN REVIEW (required) -> auto-merge -> smoke test.
+name: judge
+
+on:
+  pull_request:
+    paths:
+      - "src/judge/**"
+      - "src/leaderboard/**"
+      - "skills/**"
+      - "tests/**"
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm test
+      - run: npm run eval

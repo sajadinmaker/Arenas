@@ -7,7 +7,8 @@
   "durable_objects": {
     "bindings": [{ "name": "LEADERBOARD", "class_name": "LeaderboardDO" }]
   },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeaderboardDO"] }]
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["LeaderboardDO"] }],
+  "workflows": [{ "name": "judge", "binding": "JUDGE", "class_name": "JudgeWorkflow" }]
   // Artifacts binding (TBD-gated — uncomment once beta access confirmed):
   // "artifacts": [{ "binding": "ARTIFACTS", "namespace": "arenas-default" }]
 }

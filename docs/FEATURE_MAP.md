@@ -5,6 +5,6 @@
 | Feature | Entry point | Core files | Tests | Depends on |
 |---|---|---|---|---|
 | Create tournament | `src/tournaments/create.ts` (TBD Phase 1) | `src/tournaments/*` | `tests/tournaments.test.ts` (TBD) | Artifacts binding (TBD-gated, stubbed) |
-| Judge pipeline | `src/judge/queue-consumer.ts` (TBD Phase 1) | `src/judge/*`, `pipelines/judge.yml` (TBD) | `tests/judge.test.ts` (TBD) | Workflows, Queues |
+| Judge pipeline | `src/judge/queue-consumer.ts` | `src/judge/*`, `pipelines/judge.yml` | `tests/judge.test.ts` | Workflows, LeaderboardDO |
 | Leaderboard | `src/leaderboard/durable-object.ts` | `src/leaderboard/*` | `tests/leaderboard.test.ts` | Durable Objects (SQLite) |
 | Health check | `src/index.ts` | `src/index.ts` | `tests/health.test.ts` | Workers |
